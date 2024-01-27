@@ -1,12 +1,18 @@
+import re
+import random
+import os
+
 from django.shortcuts import render, HttpResponse, HttpResponseRedirect, redirect, get_object_or_404
 from django.http import Http404
-from home.models import Blog
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.core.mail import send_mail
 from django.db.models import Q
-import random
-import re
+from django.http import FileResponse
+from django.views import View
+from django.conf import settings
+
+from home.models import Blog
 
 # Create your views here.
 def index (request):
@@ -103,8 +109,19 @@ def blogpost (request, slug):
     except Blog.DoesNotExist:
         context = {'message': 'Blog post not found'}
         return render(request, '404.html', context, status=404)
-
-# def blogpost (request, slug):
-#     blog = Blog.objects.filter(slug=slug).first()
-#     context = {'blog': blog}
-#     return render(request, 'blogpost.html', context)
+ 
+class DownloadPDFView(View):
+    def get(self, request, *args, **kwargs): 
+        path_file = os.path.join(settings.STATICFILES_DIRS[0], 'downloads/CV-Robert-Alvarez.pdf')
+         
+        # Verify if file exist
+        if os.path.exists(path_file):
+            # open file and response
+            with open(path_file, 'rb') as file:
+                contenido = file.read()
+            response = HttpResponse(content_type='application/pdf')
+            response['Content-Disposition'] = 'attachment; filename="robert_cv.pdf"'
+            response.write(contenido)
+            return response
+        else:
+            return HttpResponse("File not found.", status=404)

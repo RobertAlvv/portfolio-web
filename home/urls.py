@@ -13,4 +13,5 @@ urlpatterns = [
     path('categories/', views.categories, name='categories'),
     path('search/', views.search, name='search'),
     path('thanks', views.thanks, name='thanks'),
+    path('download_cv/', views.DownloadPDFView.as_view(), name='download_cv'),
 ]
