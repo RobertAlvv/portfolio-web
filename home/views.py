@@ -38,9 +38,8 @@ def contact (request):
             messages.error(request, 'One or more fields are empty!')
         else:
             email_pattern = re.compile(r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$')
-            phone_pattern = re.compile(r'^[0-9]{10}$')
-
-            if email_pattern.match(email) and phone_pattern.match(phone):
+            
+            if email_pattern.match(email):
                 form_data = {
                 'name':name,
                 'email':email,
@@ -53,9 +52,8 @@ def contact (request):
                 Email:\n\t\t{}\n
                 Phone:\n\t\t{}\n
                 '''.format(form_data['name'], form_data['message'], form_data['email'],form_data['phone'])
-                send_mail('You got a mail!', message, '', ['dev.ash.py@gmail.com'])
+                send_mail('You got a mail!', message, '', ['alvarezrobert150@gmail.com'])
                 messages.success(request, 'Your message was sent.')
-                # return HttpResponseRedirect('/thanks')
             else:
                 messages.error(request, 'Email or Phone is Invalid!')
     return render(request, 'contact.html', {})
