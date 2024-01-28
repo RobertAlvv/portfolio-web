@@ -11,7 +11,13 @@
         <p class='text-justify'>
             &#128075; Hi,<br><br>
 
-            My name is Robert Alvarez and I am a highly motivated and experienced developer with a passion for creating innovative solutions for the internet.<br><br>
+            My name is Robert Alvarez a computer engineer passionate about mobile development, with a special focus on Flutter. I have 5 years of experience using this powerful tool and more than 4 years of work experience, during which I have perfected my skills in Clean Architecture, TDD, Bloc and Riverpod. My true passion is creating immersive experiences through captivating animations.<br><br>
+
+            In addition to my outstanding experience in Flutter, I have solid knowledge in various technologies, including Python, Django, JavaScript, Docker, and Postgresql. I continue to expand my skills and am currently immersed in the study of technologies from the Data Scientist world such as Pandas, Numpy, Altair, Matplotlib, Sklearn and FastAPI.<br><br>
+
+            My focus in development goes beyond coding; I strive to adopt best practices and stay abreast of the latest technological trends. I am excited for opportunities that allow me to apply my experience and skills to create innovative and efficient solutions.
+
+            <!-- My name is Robert Alvarez and I am a highly motivated and experienced developer with a passion for creating innovative solutions for the internet.<br><br>
             
             After completing my schooling in 2021, I have chosen to further my education in Computer Science while concurrently taking on freelance projects and blogging to expand my skillset. I possess a diverse range of technical knowledge and experience, including proficiency in programming languages such as Python, HTML, CSS, Javascript and SQL, as well as experience with frameworks such as Tailwind CSS and Django.<br><br>
             
@@ -24,7 +30,7 @@
 
             Using these skills I developed various real world applications such as Passsave - Password Manager using Python, PyShiels - Antivirus Application using Python,Full Stack Blogging Website and more. Checkout more projects on Projects page.<br><br>
 
-            Currently I am extending my learnings to be a skillled developer who can assist you in your projects. {% endcomment %}
+            Currently I am extending my learnings to be a skillled developer who can assist you in your projects. {% endcomment %} -->
         </p>
         <div class='my-10'>
             <p style="font-family: Poppins-Bold" class='text-4xl font-extrabold py-5 text-center md:text-start'>Skills</p>
@@ -32,9 +38,9 @@
             <div class='grid grid-cols-1 md:grid-cols-2 md:space-x-4 lg:space-x-10'>
                 <div>
                     <div class='my-3'>
-                        <p class="text-base font-medium my-3">HTML</p>
+                        <p class="text-base font-medium my-3">Flutter</p>
                         <div class="progress-bar w-full md:w-80 lg:w-full bg-gray-700 rounded-full h-2.5">
-                            <div class="html bg-gradient-to-r from-cyan-300 to-blue-600 h-2.5 rounded-full"></div>
+                            <div class="flutter bg-gradient-to-r from-cyan-300 to-blue-600 h-2.5 rounded-full"></div>
                         </div>  
                     </div>
                     <div class='my-3'>
@@ -52,18 +58,21 @@
                 </div>
 
                 <div>
-                    <div class='my-3'>
-                        <p class="text-base font-medium my-3">CSS</p>
-                        <div class="progress-bar w-full md:w-80 lg:w-full bg-gray-700 rounded-full h-2.5">
-                            <div class="css bg-gradient-to-r from-cyan-300 to-blue-600 h-2.5 rounded-full" style="width: 0%"></div>
-                        </div>  
-                    </div>
+                    
                     <div class='my-3'>
                         <p class="progress-bar text-base font-medium my-3">Python</p>
                         <div class="progress-bar w-full md:w-80 lg:w-full bg-gray-700 rounded-full h-2.5">
                             <div class="py bg-gradient-to-r from-cyan-300 to-blue-600 h-2.5 rounded-full" style="width: 0%"></div>
                         </div>  
                     </div>
+
+                    <div class='my-3'>
+                        <p class="text-base font-medium my-3">Golang</p>
+                        <div class="progress-bar w-full md:w-80 lg:w-full bg-gray-700 rounded-full h-2.5">
+                            <div class="golang bg-gradient-to-r from-cyan-300 to-blue-600 h-2.5 rounded-full" style="width: 0%"></div>
+                        </div>  
+                    </div>
+                   
                 </div>
             </div>
         </div>
@@ -78,17 +87,17 @@
             0%   {  width: 0%; }
             100% {  width: 100%; }
         }
-        .html {
-            animation: html-animation 3s normal forwards;
+        .flutter {
+            animation: flutter-animation 3s normal forwards;
         }
-        @keyframes html-animation {
+        @keyframes flutter-animation {
             0%   {  width: 0%; }
             100% {  width: 95%; }
         }
-        .css {
-            animation: css-animation 3s normal forwards
+        .golang {
+            animation: golang-animation 3s normal forwards
         }
-        @keyframes css-animation {
+        @keyframes golang-animation {
             0%   {  width: 0%; }
             100% {  width: 85%; }
         }
@@ -97,7 +106,7 @@
         }
         @keyframes js-animation {
             0%   {  width: 0%; }
-            100% {  width: 70%; }
+            100% {  width: 60%; }
         }
         .py {
             animation: py-animation 3s normal forwards
@@ -120,7 +129,7 @@
         let html_invervalSpeed = 10;
         let html_incrementSpeed = 1;
         document.addEventListener("DOMContentLoaded", function(){
-            let html_bar = document.querySelector('.html');
+            let html_bar = document.querySelector('.flutter');
             html_progressInterval = setInterval(function(){
             html_progress += html_incrementSpeed;
             html_bar.style.width = html_progress + "%";
@@ -134,7 +143,7 @@
         let css_invervalSpeed = 10;
         let css_incrementSpeed = 1;
         document.addEventListener("DOMContentLoaded", function(){
-            let css_bar = document.querySelector('.css');
+            let css_bar = document.querySelector('.golangå');
             css_progressInterval = setInterval(function(){
             css_progress += css_incrementSpeed;
             css_bar.style.width = css_progress + "%";
