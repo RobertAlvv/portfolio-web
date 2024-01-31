@@ -1,12 +1,18 @@
+import re
+import random
+import os
+
 from django.shortcuts import render, HttpResponse, HttpResponseRedirect, redirect, get_object_or_404
 from django.http import Http404
-from home.models import Blog
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.core.mail import send_mail
 from django.db.models import Q
-import random
-import re
+from django.http import FileResponse
+from django.views import View
+from django.conf import settings
+
+from home.models import Blog
 
 # Create your views here.
 def index (request):
@@ -32,9 +38,8 @@ def contact (request):
             messages.error(request, 'One or more fields are empty!')
         else:
             email_pattern = re.compile(r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$')
-            phone_pattern = re.compile(r'^[0-9]{10}$')
-
-            if email_pattern.match(email) and phone_pattern.match(phone):
+            
+            if email_pattern.match(email):
                 form_data = {
                 'name':name,
                 'email':email,
@@ -47,9 +52,8 @@ def contact (request):
                 Email:\n\t\t{}\n
                 Phone:\n\t\t{}\n
                 '''.format(form_data['name'], form_data['message'], form_data['email'],form_data['phone'])
-                send_mail('You got a mail!', message, '', ['dev.ash.py@gmail.com'])
+                send_mail('You got a mail!', message, '', ['alvarezrobert150@gmail.com'])
                 messages.success(request, 'Your message was sent.')
-                # return HttpResponseRedirect('/thanks')
             else:
                 messages.error(request, 'Email or Phone is Invalid!')
     return render(request, 'contact.html', {})
@@ -103,8 +107,19 @@ def blogpost (request, slug):
     except Blog.DoesNotExist:
         context = {'message': 'Blog post not found'}
         return render(request, '404.html', context, status=404)
-
-# def blogpost (request, slug):
-#     blog = Blog.objects.filter(slug=slug).first()
-#     context = {'blog': blog}
-#     return render(request, 'blogpost.html', context)
+ 
+class DownloadPDFView(View):
+    def get(self, request, *args, **kwargs): 
+        path_file = os.path.join(settings.STATICFILES_DIRS[0], 'downloads/CV-Robert-Alvarez.pdf')
+         
+        # Verify if file exist
+        if os.path.exists(path_file):
+            # open file and response
+            with open(path_file, 'rb') as file:
+                contenido = file.read()
+            response = HttpResponse(content_type='application/pdf')
+            response['Content-Disposition'] = 'attachment; filename="robert_cv.pdf"'
+            response.write(contenido)
+            return response
+        else:
+            return HttpResponse("File not found.", status=404)
