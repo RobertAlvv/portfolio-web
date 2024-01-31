@@ -37,6 +37,6 @@ jobs:
       with:
         # repository: ${{ github.repository }}
         image: 741586369/portfolio-web
-        register: docker.io
+        registry: docker.io
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
